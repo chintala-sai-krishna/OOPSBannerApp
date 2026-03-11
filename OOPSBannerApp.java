@@ -1,9 +1,9 @@
 /**
  * OOPSBannerApp
- * UC4: Print OOPS Banner using Array and Loop
+ * UC5: Array Initialization with String.join()
  *
  * @author Sai
- * @version 1.3
+ * @version 1.4
  */
 
 public class OOPSBannerApp {
