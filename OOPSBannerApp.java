@@ -1,31 +1,22 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * OOPSBannerApp
- * UC7: Store Character Pattern in a Class using Inner Class
+ * UC8: Use Map Collection for Character Patterns
  * 
  * @author Sai
- * @version 1.6
+ * @version 1.7
  */
 
 public class OOPSBannerApp {
 
-    // Static Inner Class
-    static class CharacterPattern {
-        char character;
-        String[] pattern;
+    // Function to create the character pattern map
+    public static Map<Character, String[]> getCharacterPatterns() {
 
-        CharacterPattern(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
+        Map<Character, String[]> map = new HashMap<>();
 
-        public String[] getPattern() {
-            return pattern;
-        }
-    }
-
-    public static void main(String[] args) {
-
-        CharacterPattern O = new CharacterPattern('O', new String[]{
+        map.put('O', new String[]{
                 " ***** ",
                 "*     *",
                 "*     *",
@@ -35,7 +26,7 @@ public class OOPSBannerApp {
                 " ***** "
         });
 
-        CharacterPattern P = new CharacterPattern('P', new String[]{
+        map.put('P', new String[]{
                 " ***** ",
                 "*     *",
                 "*     *",
@@ -45,7 +36,7 @@ public class OOPSBannerApp {
                 "*      "
         });
 
-        CharacterPattern S = new CharacterPattern('S', new String[]{
+        map.put('S', new String[]{
                 " ***** ",
                 "*      ",
                 "*      ",
@@ -55,17 +46,25 @@ public class OOPSBannerApp {
                 " ***** "
         });
 
-        String[] Opattern = O.getPattern();
-        String[] Ppattern = P.getPattern();
-        String[] Spattern = S.getPattern();
+        return map;
+    }
 
-        for (int i = 0; i < Opattern.length; i++) {
-            System.out.println(
-                    Opattern[i] + "   " +
-                    Opattern[i] + "   " +
-                    Ppattern[i] + "   " +
-                    Spattern[i]
-            );
+    public static void main(String[] args) {
+
+        String word = "OOPS";
+
+        Map<Character, String[]> patterns = getCharacterPatterns();
+
+        for (int i = 0; i < 7; i++) {
+
+            StringBuilder line = new StringBuilder();
+
+            for (char c : word.toCharArray()) {
+                String[] pattern = patterns.get(c);
+                line.append(pattern[i]).append("   ");
+            }
+
+            System.out.println(line);
         }
     }
 }
